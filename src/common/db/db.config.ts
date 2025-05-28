@@ -6,12 +6,13 @@ export const dbConfig = (
 ): TypeOrmModuleOptions => {
   const config: TypeOrmModuleOptions = {
     // Todo: DB Config를 완성시켜주세요.
+    //NODE_OPTIONS=--experimental-global-webcrypto npm run start:dev 이걸로 서버 실행
     type: 'postgres',
-    host: '',
-    port: 0,
-    username: '',
-    password: '',
-    database: '',
+    host: configService.get<string>('DB_HOST'),
+    port: configService.get<number>('DB_PORT'),
+    username: configService.get<string>('DB_USERNAME'),
+    password: configService.get<string>('DB_PASSWORD'),
+    database: configService.get<string>('DB_DATABASE'),
     autoLoadEntities: true,
     synchronize: true,
   };
